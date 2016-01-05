@@ -8,8 +8,8 @@ Please note that the library is a work in progress and, at present, does not sup
 Installation
 ------------
 
-1. [Download](https://www.google.com) the latest release from GitHub.
-2. Unzip the contents of the .zip file and place the following folders into the libraries folder in your Arduino installation directory: SyncServo, ServoUnit, LinkedList. Note that you can also download the latest version of the LinkedList library [here](https://github.com/ivanseidel/LinkedList/blob/master/README.md) - it has already been bundled for your convenience). 
+1. [Download](https://github.com/sapiensfio/SyncServo/archive/master.zip) the latest release from GitHub.
+2. Unzip the contents of the .zip file and place the following folders into the libraries folder in your Arduino installation directory: SyncServo, ServoUnit, LinkedList. Note that you can also download the latest version of the LinkedList library [here](https://github.com/ivanseidel/LinkedList) - it has already been bundled for your convenience). 
 3. Restart your Arduino IDE if it was already open. 
 
 Getting Started
