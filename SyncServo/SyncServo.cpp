@@ -20,12 +20,20 @@ SyncServo::SyncServo() {
 void SyncServo::debug(boolean enabled) {
   _debug = enabled;
 }
-
- /**
-   * Sets an intialises servos.
-   * @param pinNumber The pin number which the servo is attached to.
-   * @return True if the servo was initialised successfully.
-   */
+/**
+ * Sets and intialises a servo.
+ * @param pinNumber The pin number which the servo is attached to.
+ */
+boolean SyncServo::initialiseServo(int pinNumber) {
+  return this->initialiseServo(pinNumber, DEFAULT_MIN_POS, DEFAULT_MAX_POS);
+}
+/**
+ * Sets and intialises a servo.
+ * @param pinNumber The pin number which the servo is attached to.
+ * @param minPos    The minimum position the servo is permitted to move to.
+ * @param maxPos    The maximum position the servo is permitted to move to.
+ * @return True if the servo was initialised successfully.
+ */
 boolean SyncServo::initialiseServo(int pinNumber, int minPos = DEFAULT_MIN_POS, int maxPos = DEFAULT_MAX_POS) {
   ServoUnit* newServo;
 
@@ -41,9 +49,9 @@ boolean SyncServo::initialiseServo(int pinNumber, int minPos = DEFAULT_MIN_POS, 
   return true;
 }
 
- /**
-   * Increments all servos to their next position. This method should be called in the "loop" function of the Arduino sketch.
-   **/
+/**
+ * Increments all servos to their next position. This method should be called in the "loop" function of the Arduino sketch.
+ */
 void SyncServo::incrementServos() {
   ServoUnit* servo;
 
@@ -111,7 +119,7 @@ void SyncServo::setServo(int pinNumber, int pos, int spd) {
 }
 
 /**
- * Gets the current position of a servo
+ * Returns the current position of a servo
  * @param pinNumber The pin number of the servo.
  * @return The position value of the servo (0-180).
  */ 
@@ -121,7 +129,7 @@ int SyncServo::getServoPos(int pinNumber) {
 }
 
 /**
- * Gets the position the servo is currently moving to.
+ * Returns the position the servo is currently moving to.
  * @param pinNumber The pin number of the servo.
  * @return The position value to the servo is currently moving to (0-180).
  */
@@ -131,7 +139,7 @@ int SyncServo::getServoTargetPos(int pinNumber) {
 }
 
 /**
- * Gets a reference to the ServoUnit object corresponding to the supplied pin number.
+ * Returns a reference to the ServoUnit object corresponding to the supplied pin number.
  * @param pinNumber The pin number corresponding to the ServoUnit reference we wish to receive.
  * @return ServoUnit* A pointer to the ServoUnit object at the supplied pin number.
  */

@@ -26,32 +26,32 @@ class ServoUnit {
      */
     void setTargetPos(int pos);
     /**
-     * Gets the current position of the servo.
+     * Returns the current position of the servo.
      * @return The position value of the servo (0-180).
      */
     int getPos();
     /**
-     * Gets the current speed of the servo.
+     * Returns the current speed of the servo.
      * @return The speed of the servo (0-9).
      */
     int getSpd();
     /**
-     * Gets the target position of the servo (the position the servo should increment towards).
+     * Returns the target position of the servo (the position the servo should increment towards).
      * @return The position the servo is incrementing towards (0-180).
      */
     int getTargetPos();
     /**
-     * Gets the pin number the current servo is attached to.
+     * Returns the pin number the current servo is attached to.
      * @return The pin number assigned to the servo.
      */
     int getPin();
     /**
-     * Gets the minimum position the servo is allowed to move to.
+     * Returns the minimum position the servo is allowed to move to.
      * @return The minimum position.
      */
     int getMinPos();
     /**
-     * Gets the maximum position the servo is allowed to move to.
+     * Returns the maximum position the servo is allowed to move to.
      * @return The maximum position.
      */
     int getMaxPos();

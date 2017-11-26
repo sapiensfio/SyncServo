@@ -44,7 +44,7 @@ void ServoUnit::setTargetPos(int pos) {
 }
 
 /**
- * Gets the current position of the servo.
+ * Returns the current position of the servo.
  * @return The position value of the servo (0-180).
  */
 int ServoUnit::getPos() {
@@ -52,7 +52,7 @@ int ServoUnit::getPos() {
 }
 
 /**
- * Gets the current speed of the servo.
+ * Returns the current speed of the servo.
  * @return The speed of the servo (0-9).
  */
 int ServoUnit::getSpd() {
@@ -60,7 +60,7 @@ int ServoUnit::getSpd() {
 }
 
 /**
- * Gets the target position of the servo (the position the servo should increment towards).
+ * Returns the target position of the servo (the position the servo should increment towards).
  * @return The position the servo is incrementing towards (0-180).
  */
 int ServoUnit::getTargetPos() {
@@ -68,7 +68,7 @@ int ServoUnit::getTargetPos() {
 }
 
 /**
- * Gets the pin number the current servo is attached to.
+ * Returns the pin number the current servo is attached to.
  * @return The pin number assigned to the servo.
  */
 int ServoUnit::getPin() {
@@ -76,7 +76,7 @@ int ServoUnit::getPin() {
 }
 
 /**
- * Gets the minimum position that the servo can move to.
+ * Returns the minimum position that the servo can move to.
  * @return The min position.
  */
 int ServoUnit::getMinPos() {
@@ -84,7 +84,7 @@ int ServoUnit::getMinPos() {
 }
 
 /**
- * Gets the maximum position that the servo can move to.
+ * Returns the maximum position that the servo can move to.
  * @return The maximum position.
  */
 int ServoUnit::getMaxPos() {

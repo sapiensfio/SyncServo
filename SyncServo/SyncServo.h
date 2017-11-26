@@ -12,8 +12,15 @@ class SyncServo {
      */ 
     void debug(boolean enabled);
     /**
-     * Sets an intialises servos.
+     * Sets and intialises a servo.
      * @param pinNumber The pin number which the servo is attached to.
+     */
+    boolean initialiseServo(int pinNumber);
+    /**
+     * Sets and intialises a servo.
+     * @param pinNumber The pin number which the servo is attached to.
+     * @param minPos    The minimum position the servo is permitted to move to.
+     * @param maxPos    The maximum position the servo is permitted to move to.
      * @return True if the servo was initialised successfully.
      */
     boolean initialiseServo(int pinNumber, int minPos, int maxPos);
@@ -35,13 +42,13 @@ class SyncServo {
      */ 
     void setServo(int pinNumber, int pos, int spd);
     /**
-     * Gets the current position of a servo
+     * Returns the current position of a servo
      * @param pinNumber The pin number of the servo.
      * @return The position value of the servo (0-180).
      */ 
     int getServoPos(int pinNumber);
     /**
-     * Gets the position the servo is currently moving to.
+     * Returns the position the servo is currently moving to.
      * @param pinNumber The pin number of the servo.
      * @return The position value to the servo is currently moving to (0-180).
      */
@@ -53,7 +60,7 @@ class SyncServo {
     LinkedList<ServoUnit*> _servos; 
     unsigned long _servoTime;
     /**
-     * Gets a reference to the ServoUnit object corresponding to the supplied pin number.
+     * Returns a reference to the ServoUnit object corresponding to the supplied pin number.
      * @param pinNumber The pin number corresponding to the ServoUnit reference we wish to receive.
      * @return ServoUnit* A pointer to the ServoUnit object at the supplied pin number.
      */
