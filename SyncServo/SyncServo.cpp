@@ -120,7 +120,7 @@ void SyncServo::setServo(int pinNumber, int pos) {
  * Sets the position of a servo with a given speed.
  * @param pinNumber The pin number of the servo to set.
  * @param pos       The value to send to the servo for positioning (0-180).
- * @param spd       The speed to move the servo (0-9). A value of 0 stops the servo. 
+ * @param spd       The speed to move the servo. A value of 0 stops the servo. 
  */ 
 void SyncServo::setServo(int pinNumber, int pos, int spd) {
   ServoUnit* servo = _getServoByPin(pinNumber);

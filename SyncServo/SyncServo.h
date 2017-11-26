@@ -13,7 +13,7 @@ class SyncServo {
      * SyncServo constructor.
      * @param servoDelay The number of milliseconds to wait before updating each servo's position. 
      */
-    SyncServo::SyncServo(int servoDelay);
+    SyncServo(int servoDelay);
     /**
      * Sets debug mode.
      * @param enabled True to enable debug mode, false to disable it.
