@@ -5,10 +5,24 @@
 
 const int DEFAULT_MIN_POS = 0;
 const int DEFAULT_MAX_POS = 180;
+const int DEFAULT_SERVO_DELAY = 20;
 
+/**
+ * SyncServo constructor.
+ */
 SyncServo::SyncServo() {
   _debug = false;
-  _servoDelay = 15;
+  _servoDelay = DEFAULT_SERVO_DELAY;
+  _servoTime = 0;
+  _servos = LinkedList<ServoUnit*>();
+}
+/**
+ * SyncServo constructor.
+ * @param servoDelay The number of milliseconds to wait before updating each servo's position. 
+ */
+SyncServo::SyncServo(int servoDelay = DEFAULT_SERVO_DELAY) {
+  _debug = false;
+  _servoDelay = servoDelay;
   _servoTime = 0;
   _servos = LinkedList<ServoUnit*>();
 }
@@ -91,7 +105,7 @@ void SyncServo::incrementServos() {
 /**
  * Sets the position of a servo .
  * @param pinNumber The pin number of the servo to set.
- * @param pos The value to send to the servo for positioning (0-180).
+ * @param pos       The value to send to the servo for positioning (0-180).
  */ 
 void SyncServo::setServo(int pinNumber, int pos) {
   ServoUnit* servo = _getServoByPin(pinNumber);
@@ -105,8 +119,8 @@ void SyncServo::setServo(int pinNumber, int pos) {
 /**
  * Sets the position of a servo with a given speed.
  * @param pinNumber The pin number of the servo to set.
- * @param pos The value to send to the servo for positioning (0-180).
- * @param spd The speed to move the servo (0-9). A value of 0 stops the servo. 
+ * @param pos       The value to send to the servo for positioning (0-180).
+ * @param spd       The speed to move the servo (0-9). A value of 0 stops the servo. 
  */ 
 void SyncServo::setServo(int pinNumber, int pos, int spd) {
   ServoUnit* servo = _getServoByPin(pinNumber);
@@ -121,7 +135,7 @@ void SyncServo::setServo(int pinNumber, int pos, int spd) {
 /**
  * Returns the current position of a servo
  * @param pinNumber The pin number of the servo.
- * @return The position value of the servo (0-180).
+ * @return          The position value of the servo (0-180).
  */ 
 int SyncServo::getServoPos(int pinNumber) {
   ServoUnit* servo = _getServoByPin(pinNumber);
@@ -131,7 +145,7 @@ int SyncServo::getServoPos(int pinNumber) {
 /**
  * Returns the position the servo is currently moving to.
  * @param pinNumber The pin number of the servo.
- * @return The position value to the servo is currently moving to (0-180).
+ * @return          The position value to the servo is currently moving to (0-180).
  */
 int SyncServo::getServoTargetPos(int pinNumber) {
   ServoUnit* servo = _getServoByPin(pinNumber);
@@ -140,8 +154,8 @@ int SyncServo::getServoTargetPos(int pinNumber) {
 
 /**
  * Returns a reference to the ServoUnit object corresponding to the supplied pin number.
- * @param pinNumber The pin number corresponding to the ServoUnit reference we wish to receive.
- * @return ServoUnit* A pointer to the ServoUnit object at the supplied pin number.
+ * @param   pinNumber   The pin number corresponding to the ServoUnit reference we wish to receive.
+ * @return  ServoUnit*  A pointer to the ServoUnit object at the supplied pin number.
  */
 ServoUnit* SyncServo::_getServoByPin(int pinNumber) {
   ServoUnit* servo;
