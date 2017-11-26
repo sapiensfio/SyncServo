@@ -52,8 +52,6 @@ boolean SyncServo::initialiseServo(int pinNumber, int minPos = DEFAULT_MIN_POS, 
   ServoUnit* newServo;
 
   newServo = new ServoUnit(pinNumber, minPos, maxPos);
-  newServo->setPos(minPos);
-  newServo->setSpd(1);
   _servos.add(newServo);
 
   if(_debug) {
