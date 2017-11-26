@@ -16,7 +16,7 @@ class SyncServo {
      * @param pinNumber The pin number which the servo is attached to.
      * @return True if the servo was initialised successfully.
      */
-    boolean initialiseServo(int pinNumber);
+    boolean initialiseServo(int pinNumber, int minPos, int maxPos);
     /**
      * Increments all servos to their next position. This method should be called in the "loop" function of the Arduino sketch.
      **/
@@ -50,8 +50,6 @@ class SyncServo {
   private:
     boolean _debug; // Enter debug mode (prints messages via Serial Communication).
     unsigned int _servoDelay; // Minimum no. of milliseconds per degree for any given servo.
-    unsigned int _servoMaxAngle; // Maximum angle of servos in degrees.
-    unsigned int _servoMinAngle; // Minimum angle of servo in degrees.
     LinkedList<ServoUnit*> _servos; 
     unsigned long _servoTime;
     /**

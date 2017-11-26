@@ -8,6 +8,8 @@ class ServoUnit {
   public:
     ServoUnit();
     ServoUnit(int pinNumber);
+    ServoUnit(int pinNumber, int minPos, int maxPos);
+
     /**
      * Sets the position of the servo.
      * @param pos The position value to send to the servo (0-180). 
@@ -43,11 +45,23 @@ class ServoUnit {
      * @return The pin number assigned to the servo.
      */
     int getPin();
+    /**
+     * Gets the minimum position the servo is allowed to move to.
+     * @return The minimum position.
+     */
+    int getMinPos();
+    /**
+     * Gets the maximum position the servo is allowed to move to.
+     * @return The maximum position.
+     */
+    int getMaxPos();
   private:
     Servo _servo;
     int _pin;
     int _spd;
     int _targetPos;
+    int _minPos;
+    int _maxPos;
 };
     
 #endif

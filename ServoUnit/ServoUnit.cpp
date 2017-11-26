@@ -6,13 +6,17 @@ ServoUnit::ServoUnit() {
 	_pin = -1;
 	_spd = 0;
 	_targetPos = 0;
+  _minPos = 0;
+  _maxPos = 180;
 }
 
-ServoUnit::ServoUnit(int pinNumber) {
+ServoUnit::ServoUnit(int pinNumber, int minPos, int maxPos) {
   _servo.attach(pinNumber); 
   _pin = pinNumber;
   _spd = 0;
   _targetPos = 0;
+  _minPos = minPos;
+  _maxPos = maxPos;
 }
 
 /**
@@ -69,6 +73,22 @@ int ServoUnit::getTargetPos() {
  */
 int ServoUnit::getPin() {
   return _pin;
+}
+
+/**
+ * Gets the minimum position that the servo can move to.
+ * @return The min position.
+ */
+int ServoUnit::getMinPos() {
+  return _minPos;
+}
+
+/**
+ * Gets the maximum position that the servo can move to.
+ * @return The maximum position.
+ */
+int ServoUnit::getMaxPos() {
+  return _maxPos;
 }
 
 

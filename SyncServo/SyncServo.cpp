@@ -3,11 +3,12 @@
 #include "LinkedList.h"
 #include "SyncServo.h"
 
+const int DEFAULT_MIN_POS = 0;
+const int DEFAULT_MAX_POS = 180;
+
 SyncServo::SyncServo() {
   _debug = false;
   _servoDelay = 15;
-  _servoMaxAngle = 170;
-  _servoMinAngle = 10;
   _servoTime = 0;
   _servos = LinkedList<ServoUnit*>();
 }
@@ -25,11 +26,11 @@ void SyncServo::debug(boolean enabled) {
    * @param pinNumber The pin number which the servo is attached to.
    * @return True if the servo was initialised successfully.
    */
-boolean SyncServo::initialiseServo(int pinNumber) {
+boolean SyncServo::initialiseServo(int pinNumber, int minPos = DEFAULT_MIN_POS, int maxPos = DEFAULT_MAX_POS) {
   ServoUnit* newServo;
 
-  newServo = new ServoUnit(pinNumber);
-  newServo->setPos(_servoMinAngle);
+  newServo = new ServoUnit(pinNumber, minPos, maxPos);
+  newServo->setPos(minPos);
   newServo->setSpd(1);
   _servos.add(newServo);
 
@@ -56,20 +57,20 @@ void SyncServo::incrementServos() {
        // If the servo's current position is within a threshold of the target position then stop.
       if(servo->getPos() < servo->getTargetPos() + servo->getSpd() && servo->getPos() > servo->getTargetPos() - servo->getSpd()){
         servo->setPos(servo->getPos());
-      // If the servo's current position is less than than the target position then increase the servo's angle.
+      // If the servo's current position is less than than the target position then increase the servo's position.
       } else if(servo->getPos() < servo->getTargetPos()){
-        // If the servo attempts to exceed the maximum angle it can rotate, then set it to this maximum angle.
-        if(servo->getPos() + servo->getSpd() >= _servoMaxAngle){
-          servo->setPos(_servoMaxAngle);
+        // If the servo attempts to exceed the maximum position it can rotate, then set it to this maximum position.
+        if(servo->getPos() + servo->getSpd() >= servo->getMaxPos()){
+          servo->setPos(servo->getMaxPos());
         // Otherwise increment the servo.
         } else {
           servo->setPos(servo->getPos() + servo->getSpd());
         }
-      // If the servo's current position is less than the target position then decrease the servo's angle.
+      // If the servo's current position is less than the target position then decrease the servo's position.
       } else if (servo->getPos() > servo->getTargetPos()){
-        // If the servo attempts to exceed the minimum angle it can rotate, then set it to this minimum angle.
-        if(servo->getPos() - servo->getSpd() <= _servoMinAngle){
-          servo->setPos(_servoMinAngle);
+        // If the servo attempts to exceed the minimum position it can rotate, then set it to this minimum position.
+        if(servo->getPos() - servo->getSpd() <= servo->getMinPos()){
+          servo->setPos(servo->getMinPos());
         // Otherwise decrement the servo.
         } else {
           servo->setPos(servo->getPos() - servo->getSpd());
